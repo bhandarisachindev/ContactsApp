@@ -1,0 +1,160 @@
+*{
+  color: white;
+  margin: 0px;
+  padding: 0px; 
+}
+
+
+html,body{
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+}
+
+p,span{
+  margin:0 20px;
+}
+
+
+.navbar{
+  width: 90%;
+  min-height: 50px;
+  background-color: rgb(94, 94, 212);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-radius: 12px;
+  font-size: 30px;
+}
+
+.main{
+  background-color: rgb(180, 180, 171);
+  margin-top: 20px;
+  width: 90%;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.5rem ; 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.element{
+  display: flex;
+  box-sizing: border-box;
+  margin-top: 20px; 
+  align-items: center;
+  background-color: rgb(94, 94, 212);
+  border-radius: 12px;
+  width: 90%;
+}
+
+.ele-text{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.number{
+  width: 170px;
+}
+
+.element img{
+  height: 50px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+
+.input{
+  position: absolute;
+  right: 10%;
+}
+
+.card{
+  position: absolute;
+  right: 65%; 
+}
+
+.overlay{
+  height: 75%;
+  width: 85%;
+  position: fixed;
+  background-color: rgb(150, 100, 200);
+  top: 110px;
+  border-radius: 20px;
+  z-index: 1;
+  display: none;
+  box-sizing: border-box;
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 30px;
+  align-items: end;
+  justify-content: space-evenly;
+}
+
+.overlay input{
+  height: 30px;
+  margin-left: 20px ;
+  padding-left: 20px;
+  font-size: 20px;
+  color: black;
+}
+
+.overlayBtn{
+  height: 70px;
+  width: 70px;
+  border-radius: 20px;
+  background-color: blue;
+  font-size: 50px;  
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+  
+
+
+@media (max-width : 600px){
+
+.overlayBtn{
+  font-size: 35px;
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
+  bottom: 15px;
+  right: 15px;
+}
+
+.element{
+  font-size: 1rem;  
+  overflow: hidden;
+}
+
+.ele-text{
+  display: flex;
+  flex-direction: column;
+}}
+
+.contactAdd{
+  height: 35px;
+  width: 60px;
+  position: absolute;
+  right: 5%;
+  margin-top: 20px;
+  color: white;
+  background-color: blue;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}

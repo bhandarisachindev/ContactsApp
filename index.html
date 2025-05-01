@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/assets/contacts.png">
+  <title>Contacts</title>
+  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<div class="navbar">
+  <p ><i class="fa-solid fa-user"></i> Contacts</p>
+  <span><i class="fa-solid fa-bars"></i></span>
+</div>
+<div class="main">    
+<div class="element">
+  
+</div>
+</div>
+
+
+<div class="overlay">
+  <div class="card">
+    <img id="image" src="/assets/contacts.png" alt="">
+    <p id="name">Name</p>
+    <p id="number">Number</p>
+    <p id="mail">E-mail</p>
+  </div>
+
+  <div class="input">
+    <div >
+      <p>Name</p>
+      <input class="nameIn" type="text" placeholder="Name">
+    </div>
+      <div >
+        <p >Number</p>
+        <input  class="numberIn" type="text" placeholder="Number">
+      </div>
+      <div >
+        <p>E-mail</p>
+        <input class="mailIn"  type="text" placeholder="E-mail">
+      </div>
+      <div>
+        <p>Profile</p>
+        <input class="imageIn"   type="text" placeholder="Image link">
+      </div>
+      <button class="contactAdd">Add</button>
+  </div>
+  
+</div>
+<div class="overlayBtn">
+  <i class="fa-solid fa-plus text-[40px] absolute top-[5px] left-[8px]"></i>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
