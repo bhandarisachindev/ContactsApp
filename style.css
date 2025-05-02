@@ -45,6 +45,45 @@ p,span{
   padding-bottom: 20px;
 }
 
+.cardx{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 40px;
+  font-weight: 700;
+}
+.cardOverlay{
+  position: fixed;
+  top: 100px;
+  height: 80%;
+  width: 80%;
+  background-color: rgb(32, 32, 46);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  display: none;
+}
+.cardOverlay div{
+  display: flex !important;
+  flex-direction: column !important;
+}
+.cardOverlay p{
+  font-size: 36px !important;
+  display: inline !important;
+}
+
+.ele-text{
+  display: flex;
+  align-items: center;
+}
+.cardOverlay img{
+  height: 150px;
+  width: 150px;
+  border-radius: 10px;
+}
 .element{
   display: flex;
   box-sizing: border-box;
@@ -99,6 +138,13 @@ p,span{
   justify-content: space-evenly;
 }
 
+
+.overlay img{
+  height: 200px;
+  width: 200px;
+  border-radius: 12px;
+}
+
 .overlay input{
   height: 30px;
   margin-left: 20px ;
@@ -131,11 +177,27 @@ p,span{
   width: 300px;
   overflow: hidden;
 }
+
+
+
 @media (max-width : 400px){
   .input{
     width: 100%;
     left: 0px;
   }
+
+  .cardOverlay p{
+    font-size: 20px;
+  }
+  .cardOverlay img{
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+  }
+  .cardOverlay{
+    overflow: hidden;
+  }
+  
 
   .input input{
     width: 240px;
@@ -145,6 +207,19 @@ p,span{
 
 @media (max-width : 600px){
 
+  .cardOverlay p{
+    font-size: 20px;
+  }
+  .cardOverlay img{
+    height: 125px;
+    width: 125px;
+    border-radius: 8px;
+  }
+  .cardOverlay{
+    overflow: hidden;
+  }
+
+
 .overlayBtn{
   font-size: 35px;
   height: 40px;
@@ -153,6 +228,7 @@ p,span{
   bottom: 15px;
   right: 15px;
 }
+
 .card{
   display: none;
 }
@@ -184,10 +260,13 @@ p,span{
 @media (max-width : 800px){
   .card{
    font-size: 20px;
-  right: 70%; 
-  width: 150px;
+  right: 65%; 
+  width: 165px;
+  height: min-content;
   overflow: hidden;
   }
+
+
   .card img{
     height: 100px;
     width: 100px;

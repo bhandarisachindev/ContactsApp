@@ -15,11 +15,16 @@ let mailp= document.querySelector("#mail");
 let image= document.querySelector(".imageIn");
 let imagep= document.querySelector("#image");
 let addBtn = document.querySelector(".contactAdd");
+let cardOverlay = document.querySelector(".cardOverlay");
+let cardX = document.querySelector(".cardx");
 
 
 //
 //Variables 
 //
+
+
+let cardStatus = false;
 let addbtnStatus= false;
 let contactList =[];
 let defaultImg = "/assets/contacts.png"
@@ -44,6 +49,9 @@ let emergency = new Contact("Emergency", "112", " ", defaultImg);
 contactList.push(ambulance);
 contactList.push(emergency);
 
+
+
+
 addBtn.addEventListener("click",()=>{
   isValidEmail(mail.value);
   main.innerHTML="";
@@ -54,7 +62,18 @@ addBtn.addEventListener("click",()=>{
     number.value="";
     return;
   }
-    let emailVal = mail.value.trim() === !isValidEmail(mail.value) ? " " : mail.value;
+  if(!isValidMobile(number.value)){
+    window.alert("Please enter a valid phone number.");
+    number.value="";
+    return;
+  }
+
+  if(!mail.value==""){
+  if(!isValidEmail(mail.value)){
+    window.alert("Please enter a valid Email.");
+    mail.value="";
+    return;
+  }}
 
 
     contactList.push(new Contact(name.value,number.value,mail.value,image.value));
@@ -65,8 +84,19 @@ addBtn.addEventListener("click",()=>{
     image.value = "";
     resetOverlay();
     imagep.setAttribute("src", defaultImg);
+
+  if(cardStatus){
+    cardOverlay.style.display="none"
+    cardStatus=false;
+  }
+  localStorage.setItem("contacts",JSON.stringify(contactList));
 });
 
+
+function isValidMobile(number) {
+  const regex = /^[6-9]\d{9}$/;
+  return regex.test(number);
+}
 
 function isValidEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -86,11 +116,15 @@ function isValidEmail(email) {
     <div class="ele-text">
     <p class="name">${a.name}</p>
     <p class="number">${a.number}</p>
+    <p class="mail" style="display: none;">${a.mail ? a.mail : " "}</p>
     </div>`
 
     main.appendChild(ele);
     resetOverlay();
-  })}
+    document.querySelectorAll(".element").forEach(a=>{
+    a.addEventListener("click",overlayEle);
+  })
+})};
 
 
   
@@ -127,9 +161,40 @@ overlay.addEventListener("click",()=>{
 }});
 
 
+function overlayEle(b){
+  cardOverlay.style.display="flex";
+  cardStatus=true;
+
+if(b.target.classList.contains("element")){
+  c=b.target;
+}else if(b.target.parentElement.classList.contains("element")){
+  c=b.target.parentElement;
+}else{
+  c=b.target.parentElement.parentElement;
+}
+cardOverlay.innerHTML=`<i class="fa-solid fa-xmark cardx"></i>
+                          ${c.innerHTML}`;
+  cardRemove();
+}
+
+cardX = document.querySelector(".cardx");
+cardX.addEventListener("click",()=>{
+  cardOverlay.style.display="none";
+  cardStatus=false;
+});
+
+function cardRemove(){
+  cardX = document.querySelector(".cardx");
+  cardX.addEventListener("click",()=>{
+  cardOverlay.style.display="none";
+  cardOverlay.innerHTML="";
+  cardStatus=false;
+})}
+
+
 function resetOverlay(){
   namep.innerHTML="Name";
-  numberp.innerHTML="+91 XXXXXXXXXX"
+  numberp.innerHTML="Number"
   mailp.innerHTML="Mail"
   imagep.setAttribute("src",defaultImg);
 }
@@ -137,6 +202,14 @@ function resetOverlay(){
 
 imagep.addEventListener("error",()=>{
   imagep.setAttribute("src",defaultImg);
-})
+});
 
-document.addEventListener("DOMContentLoaded",addContact);
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+  if(localStorage.getItem("contacts")){
+    contactList=JSON.parse(localStorage.getItem("contacts"));
+  }
+  addContact();
+});
