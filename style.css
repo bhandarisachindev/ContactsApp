@@ -78,6 +78,7 @@ p,span{
 .ele-text{
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .cardOverlay img{
   height: 150px;
@@ -101,6 +102,7 @@ p,span{
 }
 .number{
   width: 170px;
+  text-align: center !important;
 }
 
 .element img{
@@ -181,6 +183,7 @@ p,span{
 
 
 @media (max-width : 400px){
+
   .input{
     width: 100%;
     left: 0px;
@@ -203,6 +206,7 @@ p,span{
     width: 240px;
     box-sizing: border-box;
   }
+
 }
 
 @media (max-width : 600px){
@@ -240,7 +244,11 @@ p,span{
 .ele-text{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }}
+
 
 .contactAdd{
   height: 35px;
