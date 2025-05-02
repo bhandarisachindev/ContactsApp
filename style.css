@@ -78,7 +78,7 @@ p,span{
 
 .card{
   position: absolute;
-  right: 65%; 
+  right: 50%; 
 }
 
 .overlay{
@@ -122,7 +122,26 @@ p,span{
   z-index: 2;
 }
   
+#number{
+  width: 215px;
+  overflow: hidden;
+}
 
+#mail{
+  width: 300px;
+  overflow: hidden;
+}
+@media (max-width : 400px){
+  .input{
+    width: 100%;
+    left: 0px;
+  }
+
+  .input input{
+    width: 240px;
+    box-sizing: border-box;
+  }
+}
 
 @media (max-width : 600px){
 
@@ -134,7 +153,9 @@ p,span{
   bottom: 15px;
   right: 15px;
 }
-
+.card{
+  display: none;
+}
 .element{
   font-size: 1rem;  
   overflow: hidden;
@@ -157,4 +178,26 @@ p,span{
   border: none;
   border-radius: 5px;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+
+@media (max-width : 800px){
+  .card{
+   font-size: 20px;
+  right: 70%; 
+  width: 150px;
+  overflow: hidden;
+  }
+  .card img{
+    height: 100px;
+    width: 100px;
+  }
+
+  .overlay{
+    align-items: center;
+  }
+  .input{
+    position: absolute;
+
+  }
 }

@@ -38,55 +38,62 @@ class Contact{
   }
 };
 
-let ambulance = new Contact("Ambulace", "108", " ", defaultImg);
+let ambulance = new Contact("Ambulace", "102,108", " ", defaultImg);
 let emergency = new Contact("Emergency", "112", " ", defaultImg);
 
 contactList.push(ambulance);
 contactList.push(emergency);
 
 addBtn.addEventListener("click",()=>{
-
+  isValidEmail(mail.value);
   main.innerHTML="";
 
   if(name.value===""||number.value===""){
     window.alert("Both number and name are required.");
     name.value="";
     number.value="";
-  }else if(image.value=""){
-    if(mail.value===""){
-      contactList.push(new Contact(name.value,number.value," ",defaultImg));  
-      addContact();
-    }else{
-    contactList.push(new Contact(name.value,number.value,mail.value,defaultImg));
-    addContact();
+    return;
   }
-    
-  }else{
+    let emailVal = mail.value.trim() === !isValidEmail(mail.value) ? " " : mail.value;
+
+
     contactList.push(new Contact(name.value,number.value,mail.value,image.value));
     addContact();
-    number.value="";
-    name.value="";
-    number.value;
-    image.value;
-}});
+    name.value = "";
+    number.value = "";
+    mail.value = "";
+    image.value = "";
+    resetOverlay();
+    imagep.setAttribute("src", defaultImg);
+});
 
 
-function addContact(){
-contactList.forEach((a)=> {
+function isValidEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
 
-  let ele= document.createElement("div");
+  function addContact(){
+  contactList.forEach((a)=> {
 
-  ele.setAttribute("class","element");
+    let ele= document.createElement("div");
 
-  ele.innerHTML=`<img src=${a.image} onerror="this.onerror=null; this.src='default.jpg'"  alt="Image">  
-  <div class="ele-text">
-  <p class="name">${a.name}</p>
-  <p class="number">${a.number}</p>
-  </div>`
+    ele.setAttribute("class","element");
 
-  main.appendChild(ele);
-})}
+    ele.innerHTML=` <img src="${a.image ? a.image : defaultImg}" 
+           onerror="this.onerror=null; this.src='${defaultImg}'" 
+           alt="Image">
+    <div class="ele-text">
+    <p class="name">${a.name}</p>
+    <p class="number">${a.number}</p>
+    </div>`
 
+    main.appendChild(ele);
+    resetOverlay();
+  })}
+
+
+  
 
 name.addEventListener("input",()=>{
   namep.innerHTML= name.value;
@@ -116,7 +123,20 @@ overlay.addEventListener("click",()=>{
     overlay.innerHTML = `<i class="fa-solid fa-plus"></i>`;
     addbtnStatus = false;
     addContact();
+    
 }});
 
+
+function resetOverlay(){
+  namep.innerHTML="Name";
+  numberp.innerHTML="+91 XXXXXXXXXX"
+  mailp.innerHTML="Mail"
+  imagep.setAttribute("src",defaultImg);
+}
+
+
+imagep.addEventListener("error",()=>{
+  imagep.setAttribute("src",defaultImg);
+})
 
 document.addEventListener("DOMContentLoaded",addContact);
