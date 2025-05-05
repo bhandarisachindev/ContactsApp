@@ -53,13 +53,13 @@ A responsive and minimalist Contacts Web App built with HTML, CSS, and JavaScrip
 ## 📷 Screenshots
 
 ### 🔹 Add Contact Form
-![Add Contact](assets/.png)
+![Add Contact](assets/overlay.png)
 
 ### 🔹 Contact List
-![Contact List](assets/.png)
+![Contact List](assets/list.png)
 
 ### 🔹 Contact Detail Overlay
-![Contact Overlay](assets/.png)
+![Contact Overlay](assets/overlay1.png)
 
 ---
 
