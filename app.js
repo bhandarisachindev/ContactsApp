@@ -119,7 +119,6 @@ function isValidEmail(email) {
     <p class="mail" style="display: none;">${a.email ? a.email : " "}</p>
     </div>`
     
-    console.log(a.email);
   
     main.appendChild(ele);
     resetOverlay();
