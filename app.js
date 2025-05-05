@@ -116,9 +116,11 @@ function isValidEmail(email) {
     <div class="ele-text">
     <p class="name">${a.name}</p>
     <p class="number">${a.number}</p>
-    <p class="mail" style="display: none;">${a.mail ? a.mail : " "}</p>
+    <p class="mail" style="display: none;">${a.email ? a.email : " "}</p>
     </div>`
-
+    
+    console.log(a.email);
+  
     main.appendChild(ele);
     resetOverlay();
     document.querySelectorAll(".element").forEach(a=>{
@@ -157,13 +159,14 @@ overlay.addEventListener("click",()=>{
     overlay.innerHTML = `<i class="fa-solid fa-plus"></i>`;
     addbtnStatus = false;
     addContact();
+}
     
-}});
+});
 
 
 function overlayEle(b){
   cardOverlay.style.display="flex";
-  cardStatus=true;
+ 
 
 if(b.target.classList.contains("element")){
   c=b.target;
@@ -174,7 +177,10 @@ if(b.target.classList.contains("element")){
 }
 cardOverlay.innerHTML=`<i class="fa-solid fa-xmark cardx"></i>
                           ${c.innerHTML}`;
+  
+  showMail();
   cardRemove();
+  cardStatus=true;
 }
 
 cardX = document.querySelector(".cardx");
@@ -188,6 +194,7 @@ function cardRemove(){
   cardX.addEventListener("click",()=>{
   cardOverlay.style.display="none";
   cardOverlay.innerHTML="";
+  showMail();
   cardStatus=false;
 })}
 
@@ -197,6 +204,18 @@ function resetOverlay(){
   numberp.innerHTML="Number"
   mailp.innerHTML="Mail"
   imagep.setAttribute("src",defaultImg);
+}
+
+function showMail(){
+  if(!cardStatus){
+    document.querySelectorAll(".mail").forEach((a)=>{
+      a.style.display="flex";
+    })
+  }else{
+    document.querySelectorAll(".mail").forEach((a)=>{
+      a.style.display="none";
+    })
+  }
 }
 
 
